@@ -4,6 +4,7 @@ import {
   IsInt,
   ValidateNested,
   ArrayMaxSize,
+  ArrayMinSize,
 } from 'class-validator';
 import { Type } from 'class-transformer';
 import { UserStatus } from '../types';
@@ -22,5 +23,6 @@ export class UpdateUsersStatusDto {
   @ValidateNested({ each: true })
   @Type(() => UserStatusUpdateDto)
   @ArrayMaxSize(500)
+  @ArrayMinSize(1)
   users: UserStatusUpdateDto[];
 }

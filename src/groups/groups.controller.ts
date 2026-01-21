@@ -16,6 +16,7 @@ import { CreateGroupDto } from './dtos/create-group.dto';
 import { UpdateGroupDto } from './dtos/update-group.dto';
 import { IGroupsResponse } from './types';
 import { GroupEntity } from './groups.entity';
+import { UserEntity } from '../users/users.entity';
 
 @Controller('groups')
 export class GroupsController {
@@ -54,7 +55,7 @@ export class GroupsController {
   @HttpCode(HttpStatus.OK)
   getGroupUsers(
     @Param('groupId', ParseIntPipe) groupId: number,
-  ): Promise<any[]> {
+  ): Promise<UserEntity[]> {
     return this.groupsService.getGroupUsersByGroupId(groupId);
   }
 }
